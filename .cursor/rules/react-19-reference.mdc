@@ -1,0 +1,6 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+When developing with React 19 use the following reference guide: https://react.dev/reference/react

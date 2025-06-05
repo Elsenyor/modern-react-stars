@@ -1,0 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+- Every change or creation to a functionality must be reviewed to determine if it affects the documentation. If so, the `README.md` file must be updated accordingly to reflect the current behavior, usage, or requirements of the application.
+
+ 

@@ -1,0 +1,96 @@
+/* Variables CSS para temas */
+:root {
+  --stars-inactive-color: #ddd;
+  --stars-active-color: #ffb400;
+}
+
+/* Tema oscuro */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --stars-inactive-color: #555;
+    --stars-active-color: #ffb400;
+  }
+}
+
+/* Contenedor principal */
+.container {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+
+/* Contenedor de estrellas */
+.starsContainer {
+  display: inline-flex;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+}
+
+.starsContainer:focus {
+  box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.6);
+  border-radius: 4px;
+}
+
+/* Contenedor de estrella individual */
+.starContainer {
+  position: relative;
+  display: inline-block;
+  overflow: visible;
+  cursor: pointer;
+}
+
+/* Estrella no interactiva */
+.readonly {
+  cursor: default;
+}
+
+/* Estilos para media estrella */
+.halfStar {
+  position: relative;
+  overflow: hidden;
+}
+
+.halfStar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 1;
+  background: linear-gradient(
+    to right,
+    var(--stars-active-color) 0%,
+    var(--stars-active-color) 100%,
+    transparent 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Contenedor de iconos personalizados */
+.customIconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilos para iconos personalizados de media estrella */
+.halfCustomIcon {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Texto para lectores de pantalla */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

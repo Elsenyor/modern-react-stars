@@ -1,0 +1,48 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+El proyecto React Stars Modern será un componente de calificación con estrellas para React, desarrollado con tecnologías modernas como Vite, TypeScript y React 19+. Su objetivo es proporcionar una alternativa actualizada al proyecto react-stars original, con mejor rendimiento, accesibilidad y flexibilidad.
+Características principales:
+Soporte para estrellas completas y medias estrellas
+Personalización completa de iconos, colores y tamaños
+Modo interactivo y de solo lectura
+Accesibilidad mejorada con soporte para teclado y lectores de pantalla
+Rendimiento optimizado con React hooks y memoización
+Soporte para temas claro/oscuro
+Demo interactiva incluida en el proyecto
+Tecnologías:
+Vite como herramienta de construcción
+TypeScript para tipado estático
+React 19+ con Hooks
+CSS Modules para estilos encapsulados
+Testing Library para pruebas
+Estructura del proyecto:
+Componente principal ReactStars que acepta props para personalización
+Componente Star para renderizar cada estrella individual
+Hook personalizado useRating para manejar la lógica de estado
+Utilidades para cálculos de posición y valores
+Demo con ejemplos de diferentes configuraciones
+Implementación de medias estrellas:
+Detección precisa de la posición del cursor dentro de cada estrella
+Soporte para tres tipos de iconos: vacío, medio y lleno
+Cálculo de valores con precisión decimal (ej: 3.5)
+Navegación por teclado con incrementos de 0.5 cuando isHalf es true
+Personalización:
+Iconos personalizables mediante props (emptyIcon, halfIcon, filledIcon)
+Compatibilidad con bibliotecas de iconos como FontAwesome o Material Icons
+Estilos personalizables mediante props o CSS
+API flexible con valores predeterminados sensatos
+Accesibilidad:
+Atributos ARIA completos
+Navegación por teclado intuitiva
+Etiquetas descriptivas para lectores de pantalla
+Alto contraste configurable
+Demo y documentación:
+Página de demostración interactiva incluida
+Múltiples ejemplos con diferentes configuraciones
+Documentación de API completa
+Guías de uso con ejemplos de código
+
+El proyecto será moderno, mantenible y fácil de usar, siguiendo las mejores prácticas actuales de desarrollo en React.
