@@ -1,110 +1,110 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 /**
- * Props para el componente ReactStars
+ * Props for the ReactStars component
  */
 export interface ReactStarsProps {
   /**
-   * Número total de estrellas
+   * Total number of stars
    * @default 5
    */
   count?: number;
 
   /**
-   * Valor inicial de calificación
+   * Initial rating value
    * @default 0
    */
   value?: number;
 
   /**
-   * Habilitar medias estrellas
+   * Enable half stars
    * @default false
    */
   isHalf?: boolean;
 
   /**
-   * Permitir cambiar la calificación
+   * Allow changing the rating
    * @default true
    */
   edit?: boolean;
 
   /**
-   * Carácter a usar como estrella
+   * Character to use as star
    * @default "★"
    */
   char?: string;
 
   /**
-   * Tamaño de las estrellas en píxeles
+   * Size of stars in pixels
    * @default 24
    */
   size?: number;
 
   /**
-   * Color de las estrellas inactivas
+   * Color of inactive stars
    * @default "#ddd"
    */
   color?: string;
 
   /**
-   * Color de las estrellas activas
+   * Color of active stars
    * @default "#ffb400"
    */
   activeColor?: string;
 
   /**
-   * Clase CSS personalizada
+   * Custom CSS class
    */
   className?: string;
 
   /**
-   * Icono para estrellas vacías
+   * Icon for empty stars
    */
   emptyIcon?: ReactNode;
 
   /**
-   * Icono para medias estrellas
+   * Icon for half stars
    */
   halfIcon?: ReactNode;
 
   /**
-   * Icono para estrellas llenas
+   * Icon for filled stars
    */
   filledIcon?: ReactNode;
 
   /**
-   * Habilitar características de accesibilidad
+   * Enable accessibility features
    * @default true
    */
   a11y?: boolean;
 
   /**
-   * Función llamada al cambiar la calificación
+   * Function called when rating changes
    */
   onChange?: (rating: number) => void;
 }
 
 /**
- * Props para el componente Star
+ * Props for the Star component
  */
 export interface StarProps {
   /**
-   * Índice de la estrella
+   * Index of the star
    */
   index: number;
 
   /**
-   * Si la estrella está activa (llena)
+   * Whether the star is active (filled)
    */
   isActive: boolean;
 
   /**
-   * Si la estrella está medio activa (media estrella)
+   * Whether the star is half active (half star)
    */
   isHalfActive: boolean;
 
   /**
-   * Configuración del componente
+   * Component configuration
    */
   config: {
     size: number;
@@ -120,42 +120,42 @@ export interface StarProps {
   };
 
   /**
-   * Función llamada al mover el ratón sobre la estrella
+   * Function called when mouse moves over the star
    */
   onMouseMove: (event: React.MouseEvent<HTMLSpanElement>) => void;
 
   /**
-   * Función llamada al hacer clic en la estrella
+   * Function called when star is clicked
    */
   onClick: (event: React.MouseEvent<HTMLSpanElement>) => void;
 
   /**
-   * Función llamada al salir el ratón de la estrella
+   * Function called when mouse leaves the star
    */
   onMouseLeave: () => void;
 }
 
 /**
- * Props para el hook useRating
+ * Props for the useRating hook
  */
 export interface UseRatingProps {
   /**
-   * Valor inicial de calificación
+   * Initial rating value
    */
   initialValue: number;
 
   /**
-   * Número total de estrellas
+   * Total number of stars
    */
   count: number;
 
   /**
-   * Habilitar medias estrellas
+   * Enable half stars
    */
   isHalf: boolean;
 
   /**
-   * Función llamada al cambiar la calificación
+   * Function called when rating changes
    */
   onChange?: (rating: number) => void;
 }

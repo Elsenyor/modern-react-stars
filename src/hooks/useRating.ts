@@ -1,9 +1,9 @@
-import { useState, useCallback, useMemo } from "react";
-import { UseRatingProps } from "@components/ReactStars/types";
-import { isDecimal, getStarValue, getValueFromKey } from "@utils/starUtils";
+import { useState, useCallback, useMemo } from 'react';
+import { UseRatingProps } from '@components/ReactStars/types';
+import { isDecimal, getStarValue, getValueFromKey } from '@utils/starUtils';
 
 /**
- * Hook personalizado para manejar la lógica de calificación con estrellas
+ * Custom hook to handle star rating logic
  */
 export const useRating = ({
   initialValue = 0,
@@ -11,40 +11,35 @@ export const useRating = ({
   isHalf = false,
   onChange,
 }: UseRatingProps) => {
-  // Estado para el valor actual de calificación
+  // State for current rating value
   const [rating, setRating] = useState<number>(initialValue);
 
-  // Estado para el valor al pasar el ratón
+  // State for hover rating
   const [hoverRating, setHoverRating] = useState<number>(0);
 
-  // Valor efectivo (hover o rating)
-  const effectiveValue = useMemo(
-    () => hoverRating || rating,
-    [hoverRating, rating],
-  );
+  // Effective value (hover or rating)
+  const effectiveValue = useMemo(() => hoverRating || rating, [hoverRating, rating]);
 
   /**
-   * Actualiza el valor de calificación y llama al callback onChange
+   * Updates the rating value and calls the onChange callback
    */
   const updateRating = useCallback(
     (newRating: number) => {
       setRating(newRating);
       onChange?.(newRating);
     },
-    [onChange],
+    [onChange]
   );
 
   /**
-   * Calcula el estado de cada estrella (activa, media activa)
+   * Calculates the state of each star (active, half active)
    */
   const getStarsState = useCallback(() => {
     return Array.from({ length: count }, (_, index) => {
       const starIndex = index + 1;
       const isActive = starIndex <= Math.floor(effectiveValue);
       const isHalfActive =
-        isHalf &&
-        Math.ceil(effectiveValue) === starIndex &&
-        isDecimal(effectiveValue);
+        isHalf && Math.ceil(effectiveValue) === starIndex && isDecimal(effectiveValue);
 
       return {
         index,
@@ -55,38 +50,38 @@ export const useRating = ({
   }, [count, effectiveValue, isHalf]);
 
   /**
-   * Maneja el movimiento del ratón sobre una estrella
+   * Handles mouse movement over a star
    */
   const handleMouseMove = useCallback(
     (event: React.MouseEvent<HTMLSpanElement>) => {
-      const index = Number(event.currentTarget.getAttribute("data-index"));
+      const index = Number(event.currentTarget.getAttribute('data-index'));
       const value = getStarValue(event, index, isHalf);
       setHoverRating(value);
     },
-    [isHalf],
+    [isHalf]
   );
 
   /**
-   * Maneja la salida del ratón del componente
+   * Handles mouse leave from the component
    */
   const handleMouseLeave = useCallback(() => {
     setHoverRating(0);
   }, []);
 
   /**
-   * Maneja el clic en una estrella
+   * Handles click on a star
    */
   const handleClick = useCallback(
     (event: React.MouseEvent<HTMLSpanElement>) => {
-      const index = Number(event.currentTarget.getAttribute("data-index"));
+      const index = Number(event.currentTarget.getAttribute('data-index'));
       const value = getStarValue(event, index, isHalf);
       updateRating(value);
     },
-    [isHalf, updateRating],
+    [isHalf, updateRating]
   );
 
   /**
-   * Maneja la navegación por teclado
+   * Handles keyboard navigation
    */
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -98,10 +93,10 @@ export const useRating = ({
         updateRating(newValue);
       }
     },
-    [count, isHalf, rating, updateRating],
+    [count, isHalf, rating, updateRating]
   );
 
-  // Calculamos el estado de las estrellas
+  // Calculate stars state
   const starsState = useMemo(() => getStarsState(), [getStarsState]);
 
   return {

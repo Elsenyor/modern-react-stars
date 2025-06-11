@@ -13,38 +13,38 @@ const App = () => {
   return (
     <div className="container">
       <h1>React Stars Modern</h1>
-      <p>Un componente moderno de calificación con estrellas para React</p>
+      <p>A modern star rating component for React</p>
 
       <div className="tabs">
         <button
           onClick={() => setActiveTab('basic')}
           className={activeTab === 'basic' ? 'active' : ''}
         >
-          Ejemplo Básico
+          Basic Example
         </button>
         <button
           onClick={() => setActiveTab('half')}
           className={activeTab === 'half' ? 'active' : ''}
         >
-          Medias Estrellas
+          Half Stars
         </button>
         <button
           onClick={() => setActiveTab('icons')}
           className={activeTab === 'icons' ? 'active' : ''}
         >
-          Iconos Personalizados
+          Custom Icons
         </button>
         <button
           onClick={() => setActiveTab('readonly')}
           className={activeTab === 'readonly' ? 'active' : ''}
         >
-          Solo Lectura
+          Read Only
         </button>
         <button
           onClick={() => setActiveTab('a11y')}
           className={activeTab === 'a11y' ? 'active' : ''}
         >
-          Accesibilidad
+          Accessibility
         </button>
       </div>
 

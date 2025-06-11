@@ -1,5 +1,5 @@
-import { useState } from "react";
-import ReactStars from "../../src";
+import { useState } from 'react';
+import ReactStars from '../../src';
 
 const A11yExample = () => {
   const [rating, setRating] = useState<number>(3);
@@ -10,15 +10,14 @@ const A11yExample = () => {
 
   return (
     <div className="example-container">
-      <h3 className="example-title">Accesibilidad</h3>
+      <h3 className="example-title">Accessibility</h3>
       <p className="example-description">
-        El componente es completamente accesible. Prueba a usar las teclas de
-        dirección para cambiar la valoración, o los números del 1 al 5 para
-        establecer un valor directo.
+        The component is fully accessible. Try using the arrow keys to change the rating, or numbers
+        1 to 5 to set a direct value.
       </p>
 
       <div>
-        <label htmlFor="stars-a11y">Valorar del 1 al 5:</label>
+        <label htmlFor="stars-a11y">Rate from 1 to 5:</label>
         <div id="stars-a11y">
           <ReactStars
             count={5}
@@ -31,18 +30,16 @@ const A11yExample = () => {
         </div>
       </div>
 
-      <p>Valoración actual: {rating}</p>
+      <p>Current rating: {rating}</p>
 
       <div className="a11y-instructions">
-        <h4>Instrucciones para teclado:</h4>
+        <h4>Keyboard Instructions:</h4>
         <ul>
-          <li>Tab: Enfocar el componente</li>
-          <li>
-            Teclas de flecha izquierda/derecha: Disminuir/aumentar la valoración
-          </li>
-          <li>Números 1-5: Establecer valoración directamente</li>
-          <li>Home: Establecer valoración a 0</li>
-          <li>End: Establecer valoración máxima</li>
+          <li>Tab: Focus the component</li>
+          <li>Left/Right arrow keys: Decrease/increase rating</li>
+          <li>Numbers 1-5: Set rating directly</li>
+          <li>Home: Set rating to 0</li>
+          <li>End: Set maximum rating</li>
         </ul>
       </div>
 
@@ -54,7 +51,7 @@ const Example = () => {
 
   return (
     <>
-      <label htmlFor="stars-a11y">Valorar del 1 al 5:</label>
+      <label htmlFor="stars-a11y">Rate from 1 to 5:</label>
       <div id="stars-a11y">
         <ReactStars
           count={5}

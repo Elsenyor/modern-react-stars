@@ -1,11 +1,11 @@
-import ReactStars from "../../src";
+import ReactStars from '../../src';
 
 const ReadOnlyExample = () => {
   return (
     <div className="example-container">
-      <h3 className="example-title">Modo Solo Lectura</h3>
+      <h3 className="example-title">Read Only Mode</h3>
       <p className="example-description">
-        Uso del componente en modo de solo lectura, sin interacción.
+        Using the component in read-only mode, without interaction.
       </p>
 
       <ReactStars count={5} value={3.7} size={36} isHalf={true} edit={false} />
