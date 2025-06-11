@@ -1,5 +1,5 @@
-import { useState } from "react";
-import ReactStars from "../../src";
+import { useState } from 'react';
+import ReactStars from '../../src';
 
 const CustomIconsExample = () => {
   const [rating, setRating] = useState<number>(4);
@@ -10,10 +10,8 @@ const CustomIconsExample = () => {
 
   return (
     <div className="example-container">
-      <h3 className="example-title">Iconos Personalizados</h3>
-      <p className="example-description">
-        Uso del componente con iconos personalizados de FontAwesome.
-      </p>
+      <h3 className="example-title">Custom Icons</h3>
+      <p className="example-description">Using the component with custom FontAwesome icons.</p>
 
       <ReactStars
         count={5}
@@ -26,7 +24,7 @@ const CustomIconsExample = () => {
         filledIcon={<i className="fas fa-star"></i>}
       />
 
-      <p>Valoración actual: {rating}</p>
+      <p>Current rating: {rating}</p>
 
       <div className="example-code">
         <pre>{`import ReactStars from 'react-stars-modern';

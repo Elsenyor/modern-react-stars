@@ -1,18 +1,16 @@
 /**
- * Determina si el valor es decimal
- * @param value Valor a comprobar
- * @returns true si el valor tiene decimales
+ * Determines if the value is decimal
+ * @param value Value to check
+ * @returns true if the value has decimals
  */
 export const isDecimal = (value: number): boolean => value % 1 !== 0;
 
 /**
- * Determina si el cursor está en la primera o segunda mitad de un elemento
- * @param event Evento del ratón
- * @returns true si el cursor está en la segunda mitad del elemento
+ * Determines if the cursor is in the first or second half of an element
+ * @param event Mouse event
+ * @returns true if the cursor is in the second half of the element
  */
-export const isInSecondHalf = (
-  event: React.MouseEvent<HTMLElement>,
-): boolean => {
+export const isInSecondHalf = (event: React.MouseEvent<HTMLElement>): boolean => {
   const { currentTarget } = event;
   const rect = currentTarget.getBoundingClientRect();
   const position = event.clientX - rect.left;
@@ -20,16 +18,16 @@ export const isInSecondHalf = (
 };
 
 /**
- * Calcula el valor de la estrella basado en la posición del cursor
- * @param event Evento del ratón
- * @param index Índice de la estrella
- * @param isHalf Si se permiten medias estrellas
- * @returns Valor de la estrella (index + 1 o index + 0.5)
+ * Calculates the star value based on cursor position
+ * @param event Mouse event
+ * @param index Star index
+ * @param isHalf Whether half stars are enabled
+ * @returns Star value (index + 1 or index + 0.5)
  */
 export const getStarValue = (
   event: React.MouseEvent<HTMLElement>,
   index: number,
-  isHalf: boolean,
+  isHalf: boolean
 ): number => {
   if (!isHalf) return index + 1;
 
@@ -37,20 +35,20 @@ export const getStarValue = (
 };
 
 /**
- * Obtiene el valor de calificación a partir de una tecla presionada
- * @param key Tecla presionada
- * @param currentValue Valor actual
- * @param count Número total de estrellas
- * @param isHalf Si se permiten medias estrellas
- * @returns Nuevo valor de calificación
+ * Gets the rating value from a pressed key
+ * @param key Pressed key
+ * @param currentValue Current value
+ * @param count Total number of stars
+ * @param isHalf Whether half stars are enabled
+ * @returns New rating value
  */
 export const getValueFromKey = (
   key: string,
   currentValue: number,
   count: number,
-  isHalf: boolean,
+  isHalf: boolean
 ): number => {
-  // Si es un número del 1 al 9
+  // If it's a number from 1 to 9
   if (/^[1-9]$/.test(key)) {
     const numericValue = parseInt(key, 10);
     if (numericValue <= count) {
@@ -58,17 +56,17 @@ export const getValueFromKey = (
     }
   }
 
-  // Flechas para navegar
+  // Arrow keys for navigation
   switch (key) {
-    case "ArrowRight":
-    case "ArrowUp":
+    case 'ArrowRight':
+    case 'ArrowUp':
       return Math.min(count, currentValue + (isHalf ? 0.5 : 1));
-    case "ArrowLeft":
-    case "ArrowDown":
+    case 'ArrowLeft':
+    case 'ArrowDown':
       return Math.max(0, currentValue - (isHalf ? 0.5 : 1));
-    case "Home":
+    case 'Home':
       return 0;
-    case "End":
+    case 'End':
       return count;
     default:
       return currentValue;

@@ -1,54 +1,47 @@
 # React Stars Modern
 
-Un componente moderno de calificación con estrellas para React, con soporte para medias estrellas e iconos personalizados.
+A modern star rating component for React, with support for half stars and custom icons.
 
-## Características
+## Features
 
-- ⭐ Soporte para estrellas completas y medias estrellas
-- 🎨 Totalmente personalizable (colores, tamaños, iconos)
-- 🔄 Modo interactivo o de solo lectura
-- ♿ Accesibilidad (a11y) con soporte completo para teclado
-- 🚀 Rendimiento optimizado con React 18+
-- 📦 Liviano y sin dependencias externas
+- ⭐ Support for full and half stars
+- 🎨 Fully customizable (colors, sizes, icons)
+- 🔄 Interactive or read-only mode
+- ♿ Accessibility (a11y) with full keyboard support
+- 🚀 Optimized performance with React 18+
+- 📦 Lightweight with no external dependencies
+- 🌐 Consistent display across all browsers using SVG
 
-## Instalación
+## Installation
 
 ```bash
 npm install react-stars-modern
-# o
+# or
 yarn add react-stars-modern
 ```
 
-## Uso básico
+## Basic Usage
 
 ```jsx
-import ReactStars from "react-stars-modern";
+import ReactStars from 'react-stars-modern';
 
 function App() {
   const handleRatingChange = (newRating) => {
-    console.log(`Nueva calificación: ${newRating}`);
+    console.log(`New rating: ${newRating}`);
   };
 
-  return (
-    <ReactStars
-      count={5}
-      value={3.5}
-      isHalf={true}
-      onChange={handleRatingChange}
-      size={24}
-    />
-  );
+  return <ReactStars count={5} value={3.5} isHalf={true} onChange={handleRatingChange} size={24} />;
 }
 ```
 
-## Uso con iconos personalizados
+## Usage with Custom Icons
 
-### Iconos de FontAwesome
+### FontAwesome Icons
 
 ```jsx
-import ReactStars from "react-stars-modern";
-import { FaStar, FaStarHalfAlt } from "react-icons/fa";
-import { FaRegStar } from "react-icons/fa";
+import ReactStars from 'react-stars-modern';
+import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
+import { FaRegStar } from 'react-icons/fa';
 
 function App() {
   return (
@@ -66,13 +59,13 @@ function App() {
 }
 ```
 
-### Iconos personalizados SVG
+### Custom SVG Icons
 
 ```jsx
-import ReactStars from "react-stars-modern";
-import { ReactComponent as EmptyStar } from "./icons/empty-star.svg";
-import { ReactComponent as HalfStar } from "./icons/half-star.svg";
-import { ReactComponent as FilledStar } from "./icons/filled-star.svg";
+import ReactStars from 'react-stars-modern';
+import { ReactComponent as EmptyStar } from './icons/empty-star.svg';
+import { ReactComponent as HalfStar } from './icons/half-star.svg';
+import { ReactComponent as FilledStar } from './icons/filled-star.svg';
 
 function App() {
   return (
@@ -90,76 +83,97 @@ function App() {
 }
 ```
 
-## Cómo funciona el sistema de medias estrellas
+## How the Half Star System Works
 
-El componente utiliza un enfoque moderno para gestionar las medias estrellas:
+The component uses a modern approach to handle half stars:
 
-1. **Detección de posición**: Cuando `isHalf` está activado, el componente detecta si el cursor está en la primera o segunda mitad de cada estrella.
+1. **Position Detection**: When `isHalf` is enabled, the component detects whether the cursor is in the first or second half of each star.
 
-2. **Renderizado inteligente**:
+2. **Smart Rendering**:
 
-   - Para estrellas completas, se muestra el icono `filledIcon`
-   - Para medias estrellas, se muestra el icono `halfIcon`
-   - Para estrellas vacías, se muestra el icono `emptyIcon`
+   - **With custom icons**:
+     - For full stars, the `filledIcon` is displayed
+     - For half stars, the `halfIcon` is displayed
+     - For empty stars, the `emptyIcon` is displayed
+   - **Without custom icons**:
+     - SVG is used to render the stars
+     - For half stars, a clipPath is applied to show only half of the star in the active color
 
-3. **Cálculo preciso**: El valor de calificación se calcula con precisión decimal (por ejemplo, 3.5) basado en la posición exacta del cursor o la interacción del teclado.
+3. **Precise Calculation**: The rating value is calculated with decimal precision (e.g., 3.5) based on the exact cursor position or keyboard interaction.
 
-4. **Optimización de rendimiento**: La lógica utiliza hooks personalizados y memoización para evitar cálculos y renderizados innecesarios.
+4. **Performance Optimization**: The logic uses custom hooks and memoization to avoid unnecessary calculations and renders.
+
+5. **Cross-browser Compatibility**: The use of SVG ensures consistent display of half stars across all browsers.
+
+## SVG Implementation
+
+The component uses SVG to render stars when no custom icons are provided:
+
+- **Full stars**: An SVG star shape is rendered in the active color.
+- **Half stars**: A `clipPath` is used to show only the left half of the star in the active color.
+- **Empty stars**: An SVG star shape is rendered in the inactive color.
+
+This SVG implementation offers several advantages:
+
+- Consistent display across all browsers
+- Scalability without quality loss
+- Precision in half star representation
+- No dependency on browser-specific CSS techniques
 
 ## API
 
-| Propiedad     | Descripción                                | Tipo                       | Valor predeterminado |
-| ------------- | ------------------------------------------ | -------------------------- | -------------------- |
-| `count`       | Número total de estrellas                  | `number`                   | `5`                  |
-| `value`       | Valor inicial de calificación              | `number`                   | `0`                  |
-| `isHalf`      | Habilitar medias estrellas                 | `boolean`                  | `false`              |
-| `edit`        | Permitir cambiar la calificación           | `boolean`                  | `true`               |
-| `emptyIcon`   | Icono para estrellas vacías                | `ReactNode`                | `null`               |
-| `halfIcon`    | Icono para medias estrellas                | `ReactNode`                | `null`               |
-| `filledIcon`  | Icono para estrellas llenas                | `ReactNode`                | `null`               |
-| `size`        | Tamaño de las estrellas (px)               | `number`                   | `24`                 |
-| `color`       | Color de estrellas inactivas               | `string`                   | `"#ddd"`             |
-| `activeColor` | Color de estrellas activas                 | `string`                   | `"#ffb400"`          |
-| `className`   | Clase CSS personalizada                    | `string`                   | `""`                 |
-| `onChange`    | Función llamada al cambiar la calificación | `(rating: number) => void` | `undefined`          |
-| `a11y`        | Habilitar características de accesibilidad | `boolean`                  | `true`               |
+| Property      | Description                         | Type                       | Default Value |
+| ------------- | ----------------------------------- | -------------------------- | ------------- |
+| `count`       | Total number of stars               | `number`                   | `5`           |
+| `value`       | Initial rating value                | `number`                   | `0`           |
+| `isHalf`      | Enable half stars                   | `boolean`                  | `false`       |
+| `edit`        | Allow changing the rating           | `boolean`                  | `true`        |
+| `emptyIcon`   | Icon for empty stars                | `ReactNode`                | `null`        |
+| `halfIcon`    | Icon for half stars                 | `ReactNode`                | `null`        |
+| `filledIcon`  | Icon for filled stars               | `ReactNode`                | `null`        |
+| `size`        | Size of stars in pixels             | `number`                   | `24`          |
+| `color`       | Color of inactive stars             | `string`                   | `"#ddd"`      |
+| `activeColor` | Color of active stars               | `string`                   | `"#ffb400"`   |
+| `className`   | Custom CSS class                    | `string`                   | `""`          |
+| `onChange`    | Function called when rating changes | `(rating: number) => void` | `undefined`   |
+| `a11y`        | Enable accessibility features       | `boolean`                  | `true`        |
 
-## Accesibilidad
+## Accessibility
 
-El componente implementa las siguientes características de accesibilidad:
+The component implements the following accessibility features:
 
-- Atributos ARIA apropiados (`role="slider"`, `aria-valuemin`, `aria-valuemax`, `aria-valuenow`)
-- Navegación completa por teclado (flechas izquierda/derecha, números)
-- Etiquetas descriptivas para lectores de pantalla
-- Contraste de color configurable
+- Appropriate ARIA attributes (`role="slider"`, `aria-valuemin`, `aria-valuemax`, `aria-valuenow`)
+- Complete keyboard navigation (left/right arrows, numbers)
+- Descriptive labels for screen readers
+- Configurable color contrast
 
-## Desarrollo local
+## Local Development
 
-1. Clonar el repositorio
+1. Clone the repository
 
 ```bash
-git clone https://github.com/usuario/react-stars-modern.git
+git clone https://github.com/username/react-stars-modern.git
 cd react-stars-modern
 ```
 
-2. Instalar dependencias
+2. Install dependencies
 
 ```bash
 npm install
 ```
 
-3. Iniciar el servidor de desarrollo
+3. Start the development server
 
 ```bash
 npm run dev
 ```
 
-4. Construir para producción
+4. Build for production
 
 ```bash
 npm run build
 ```
 
-## Licencia
+## License
 
 MIT

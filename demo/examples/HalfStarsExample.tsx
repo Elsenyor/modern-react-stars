@@ -1,5 +1,5 @@
-import { useState } from "react";
-import ReactStars from "../../src";
+import { useState } from 'react';
+import ReactStars from '../../src';
 
 const HalfStarsExample = () => {
   const [rating, setRating] = useState<number>(3.5);
@@ -10,20 +10,12 @@ const HalfStarsExample = () => {
 
   return (
     <div className="example-container">
-      <h3 className="example-title">Medias Estrellas</h3>
-      <p className="example-description">
-        Uso del componente con soporte para medias estrellas.
-      </p>
+      <h3 className="example-title">Half Stars</h3>
+      <p className="example-description">Using the component with support for half stars.</p>
 
-      <ReactStars
-        count={5}
-        value={rating}
-        onChange={handleRatingChange}
-        size={36}
-        isHalf={true}
-      />
+      <ReactStars count={5} value={rating} onChange={handleRatingChange} size={36} isHalf={true} />
 
-      <p>Valoración actual: {rating}</p>
+      <p>Current rating: {rating}</p>
 
       <div className="example-code">
         <pre>{`import ReactStars from 'react-stars-modern';
